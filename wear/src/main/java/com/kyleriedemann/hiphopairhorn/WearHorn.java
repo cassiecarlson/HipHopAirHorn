@@ -22,6 +22,7 @@ import com.google.android.gms.wearable.Wearable;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class WearHorn extends Activity {
 
@@ -36,6 +37,8 @@ public class WearHorn extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rect_activity_wear_horn);
+
+        ButterKnife.bind(this);
 
         hasSpeaker = hasSpeaker();
 

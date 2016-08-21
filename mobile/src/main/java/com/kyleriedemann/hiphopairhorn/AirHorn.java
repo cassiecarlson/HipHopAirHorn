@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class AirHorn extends Activity {
 
@@ -18,9 +20,11 @@ public class AirHorn extends Activity {
     @BindView(R.id.air_horn_button)
     View afroGuy;
 
+    @Nullable
     @BindView(R.id.speaker_left)
     View leftSpeaker;
 
+    @Nullable
     @BindView(R.id.speaker_right)
     View rightSpeaker;
 
@@ -28,6 +32,8 @@ public class AirHorn extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_air_horn);
+
+        ButterKnife.bind(this);
 
         // create an intent that will start the service to listen for the message from the watch
         Intent i = new Intent(this, DataLayerListenerService.class);
@@ -49,8 +55,13 @@ public class AirHorn extends Activity {
 
         Animation smallPulse = AnimationUtils.loadAnimation(this, R.anim.small_pulse);
 
-        leftSpeaker.startAnimation(smallPulse);
-        rightSpeaker.startAnimation(smallPulse);
+        if (leftSpeaker != null) {
+            leftSpeaker.startAnimation(smallPulse);
+        }
+
+        if (rightSpeaker != null) {
+            rightSpeaker.startAnimation(smallPulse);
+        }
     }
 
     // binds the sound to the media player and plays
