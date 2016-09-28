@@ -3,6 +3,8 @@ package com.kyleriedemann.hiphopairhorn;
 import android.content.Intent;
 import android.media.MediaPlayer;
 
+import com.crashlytics.android.answers.Answers;
+import com.crashlytics.android.answers.CustomEvent;
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.WearableListenerService;
 
@@ -25,6 +27,8 @@ public class DataLayerListenerService extends WearableListenerService {
         Timber.d("onMessageRecieved %s", messageEvent);
 
         if (Objects.equals(messageEvent.getPath(), SWAG_PATH))
+            Answers.getInstance().logCustom(new CustomEvent("Swagging out from the watch"));
+
             playHorn();
     }
 

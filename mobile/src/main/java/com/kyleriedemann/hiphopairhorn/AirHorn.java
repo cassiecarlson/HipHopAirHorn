@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
+import com.crashlytics.android.answers.Answers;
+import com.crashlytics.android.answers.CustomEvent;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import timber.log.Timber;
@@ -35,6 +38,8 @@ public class AirHorn extends Activity {
         Timber.d("onCreate");
 
         findViewById(R.id.main_view).setOnTouchListener((view, motionEvent) -> {
+            Answers.getInstance().logCustom(new CustomEvent("Swagging out from the phone"));
+
             playHorn();
             scaleImage();
             return false;

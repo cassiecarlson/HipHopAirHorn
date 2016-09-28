@@ -1,4 +1,19 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'me.tatarka.retrolambda'
 
@@ -8,10 +23,14 @@ android {
 
     defaultConfig {
         applicationId "com.kyleriedemann.hiphopairhorn"
+
         minSdkVersion 21
         targetSdkVersion 24
+
         versionCode 5
         versionName "2.1"
+
+        manifestPlaceholders = [ fabricApiKey:"d65531cbe3f365658c550d0f33da2ebf61246afe" ]
     }
 
     compileOptions {
@@ -66,4 +85,10 @@ dependencies {
     // testing
     testCompile 'junit:junit:4.12'
     testCompile "org.mockito:mockito-core:1.10.19"
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.4@aar') {
+        transitive = true;
+    }
+    compile('com.crashlytics.sdk.android:answers:1.3.10@aar') {
+        transitive = true;
+    }
 }
