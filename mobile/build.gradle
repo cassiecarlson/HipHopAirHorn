@@ -27,8 +27,8 @@ android {
         minSdkVersion 21
         targetSdkVersion 24
 
-        versionCode 5
-        versionName "2.1"
+        versionCode 6
+        versionName "2.2"
 
         manifestPlaceholders = [ fabricApiKey:"d65531cbe3f365658c550d0f33da2ebf61246afe" ]
     }
