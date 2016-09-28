@@ -19,12 +19,16 @@ import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.NodeApi;
 import com.google.android.gms.wearable.Wearable;
 
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 public class WearHorn extends Activity {
+
+    public static final String SWAG_PATH = "/swag";
 
     private GoogleApiClient googleApiClient;
 
@@ -65,7 +69,10 @@ public class WearHorn extends Activity {
 
     // send the message to the watch
     private void sendMessage() {
+        Timber.d("sendMessage");
+
         if (googleApiClient == null) {
+            Timber.d("googleApiClient is null");
             return;
         }
 
@@ -77,12 +84,19 @@ public class WearHorn extends Activity {
 
     private void resultCallback(NodeApi.GetConnectedNodesResult result) {
         final List<Node> nodes1 = result.getNodes();
+
+        Timber.d(Arrays.toString(nodes1.toArray()));
+
         for (int i = 0; i < nodes1.size(); i++) {
             final Node node = nodes1.get(i);
 
+            Timber.i("Node: %s", node);
+
             // send the message to the watch
             // specify the api client, the node, the message content, and a byte stream array
-            Wearable.MessageApi.sendMessage(googleApiClient, node.getId(), null, new byte[]{1});
+            Wearable.MessageApi.sendMessage(googleApiClient, node.getId(), SWAG_PATH, new byte[]{1});
+
+            Timber.d("Sent message");
         }
     }
 

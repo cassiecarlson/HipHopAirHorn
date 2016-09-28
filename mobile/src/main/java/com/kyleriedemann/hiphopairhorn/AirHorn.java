@@ -1,7 +1,6 @@
 package com.kyleriedemann.hiphopairhorn;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,11 +10,9 @@ import android.view.animation.AnimationUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 public class AirHorn extends Activity {
-
-    // media player to play the sound
-    MediaPlayer airHornPlayer;
 
     @BindView(R.id.air_horn_button)
     View afroGuy;
@@ -35,9 +32,7 @@ public class AirHorn extends Activity {
 
         ButterKnife.bind(this);
 
-        // create an intent that will start the service to listen for the message from the watch
-        Intent i = new Intent(this, DataLayerListenerService.class);
-        this.startService(i);
+        Timber.d("onCreate");
 
         findViewById(R.id.main_view).setOnTouchListener((view, motionEvent) -> {
             playHorn();
@@ -66,7 +61,9 @@ public class AirHorn extends Activity {
 
     // binds the sound to the media player and plays
     private void playHorn() {
-        airHornPlayer = MediaPlayer.create(this, R.raw.air_horn);
+        Timber.d("playHorn");
+
+        MediaPlayer airHornPlayer = MediaPlayer.create(this, R.raw.air_horn);
         airHornPlayer.setOnCompletionListener(MediaPlayer::release);
         airHornPlayer.start();
     }
