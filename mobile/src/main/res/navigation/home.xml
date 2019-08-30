@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home"
+    app:startDestination="@+id/animatedPartyScreen">
+
+    <fragment
+        android:id="@+id/partyScreen"
+        android:name="com.kyleriedemann.hiphopairhorn.PartyFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_party">
+    </fragment>
+
+    <fragment
+        android:id="@+id/animatedPartyScreen"
+        android:name="com.kyleriedemann.hiphopairhorn.AnimatedPartyFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_party">
+    </fragment>
+
+</navigation>

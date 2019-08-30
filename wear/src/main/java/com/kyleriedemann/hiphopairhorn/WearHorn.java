@@ -22,8 +22,6 @@ import com.google.android.gms.wearable.Wearable;
 import java.util.Arrays;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import timber.log.Timber;
 
 public class WearHorn extends Activity {
@@ -34,15 +32,14 @@ public class WearHorn extends Activity {
 
     private boolean hasSpeaker;
 
-    @BindView(R.id.wear_button)
     View afroGuy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.rect_activity_wear_horn);
+        setContentView(R.layout.activity_wear_horn);
 
-        ButterKnife.bind(this);
+        afroGuy = findViewById(R.id.wear_button);
 
         hasSpeaker = hasSpeaker();
 

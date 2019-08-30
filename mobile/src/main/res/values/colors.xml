@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorPrimary">@color/dark_teal</color>
+    <color name="colorPrimaryDark">@color/greybird</color>
+    <color name="colorAccent">@color/afro_background</color>
+
+    <color name="defaultColorPrimary">#008577</color>
+    <color name="defaultColorPrimaryDark">#00574B</color>
+    <color name="defaultColorAccent">#D81B60</color>
+
     <color name="light_teal">#64ffda</color>
     <color name="dark_teal">#80cbc4</color>
     <color name="greybird">#607d8b</color>

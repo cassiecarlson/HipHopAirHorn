@@ -5,4 +5,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <string name="title_home">Home</string>
+    <string name="title_map">Map</string>
+    <string name="title_instant_horn">Air Horn</string>
+
 </resources>
